@@ -42,7 +42,7 @@
     <select id="qryOneById" resultMap="HkBannerResponseMap">
         select
             banner_id, title, description, image, url
-        from hk_banner where banner_id = #{banner_id}
+        from hk_banner where banner_id = #{bannerId}
     </select>
 
     <!-- 添加banner列表数据 -->
