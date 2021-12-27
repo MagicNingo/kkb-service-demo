@@ -1,5 +1,6 @@
 package com.kkb.hk.controller;
 
+import com.kkb.hk.entity.HkBanner;
 import com.kkb.hk.service.HkBannerService;
 import com.kkb.hk.utils.ReqResultUtil;
 import com.kkb.hk.vo.request.banner.HkBannerRequest;
@@ -54,6 +55,43 @@ public class HkBannerController {
         return ReqResultUtil.genSuccessResultResponse(hkBannerService.qryListByPage(hkBannerRequest));
     }
 
+    /**
+     * @description:添加banner列表数据
+     * @param: [banner]
+     * @return:java.lang.Integer
+     * @author NingYueFeng
+     * @date: 2021/12/22 15:27
+     */
+    @RequestMapping(value = "/addHKBanner", method = RequestMethod.POST)
+    public Integer addHKBanner(HkBanner banner) {
+        log.info("进入banner列表接口");
+        return hkBannerService.addHkBanner(banner);
+    }
 
+    /**
+     * @description:删除anner列表数据
+     * @param: [hkBannerRequest]
+     * @return:java.lang.Integer
+     * @author NingYueFeng
+     * @date: 2021/12/22 15:27
+     */
+    @RequestMapping(value = "/delHKBanner", method = RequestMethod.POST)
+    public Integer delHKBanner(HkBannerRequest hkBannerRequest) {
+        log.info("进入banner列表接口");
+        return hkBannerService.delHkBannerById(hkBannerRequest);
+    }
+
+    /**
+     * @description:修改banner列表数据
+     * @param: [banner]
+     * @return:java.lang.Integer
+     * @author NingYueFeng
+     * @date: 2021/12/22 15:27
+     */
+    @RequestMapping(value = "/upHKBanner", method = RequestMethod.POST)
+    public Integer upHKBanner(HkBanner banner) {
+        log.info("进入banner列表接口");
+        return hkBannerService.modHkBannerById(banner);
+    }
 }
 
