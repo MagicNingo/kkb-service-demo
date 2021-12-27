@@ -1,5 +1,6 @@
 package com.kkb.hk.service;
 
+import com.kkb.hk.entity.HkBanner;
 import com.kkb.hk.entity.page.PageResult;
 import com.kkb.hk.vo.request.banner.HkBannerRequest;
 import com.kkb.hk.vo.response.banner.HkBannerResponse;
@@ -31,4 +32,31 @@ public interface HkBannerService {
      * @date: 2021/12/16 16:23
      */
     PageResult qryListByPage(HkBannerRequest hkBannerRequest);
+
+    /**
+     * @description: 添加banner列表数据
+     * @param: hkBannerRequest
+     * @return: java.lang.Integer
+     * @author NingYueFeng
+     * @date: 2021/12/22 15:27
+     */
+    Integer addHkBanner(HkBanner banner);
+
+    /**
+     * @description: 删除banner列表数据
+     * @param: hkBannerRequest
+     * @return: java.lang.Integer
+     * @author NingYueFeng
+     * @date: 2021/12/22 15:27
+     */
+    Integer delHkBannerById(HkBannerRequest hkBannerRequest);
+
+    /**
+     * @description: 更新banner列表数据
+     * @param: hkBannerRequest
+     * @return: java.lang.Integer
+     * @author NingYueFeng
+     * @date: 2021/12/22 15:27
+     */
+    Integer modHkBannerById(HkBanner banner);
 }

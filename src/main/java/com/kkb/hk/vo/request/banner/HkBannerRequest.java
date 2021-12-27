@@ -12,6 +12,10 @@ import lombok.Data;
 @Data
 public class HkBannerRequest extends PageRequest {
     /**
+     * 编号
+     */
+    private Integer bannerId;
+    /**
      * 标题
      */
     private String title;

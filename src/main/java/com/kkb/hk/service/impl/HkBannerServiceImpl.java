@@ -5,6 +5,7 @@ import com.alibaba.fastjson.TypeReference;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.kkb.hk.dao.HkBannerDao;
+import com.kkb.hk.entity.HkBanner;
 import com.kkb.hk.entity.page.PageResult;
 import com.kkb.hk.service.HkBannerService;
 import com.kkb.hk.utils.PageUtils;
@@ -26,6 +27,7 @@ import java.util.List;
 public class HkBannerServiceImpl implements HkBannerService {
     @Resource
     private HkBannerDao hkBannerDao;
+    private HkBannerRequest request = new HkBannerRequest();
 
     /**
      * @description:  查询banner列表
@@ -63,6 +65,59 @@ public class HkBannerServiceImpl implements HkBannerService {
         PageHelper.startPage(pageNum, pageSize);
         List<HkBannerResponse> responseList = this.hkBannerDao.qryListByPage(hkBannerRequest);
         return PageUtils.getPageResult(new PageInfo<HkBannerResponse>(responseList));
+    }
+
+    /**
+     * @description: 添加banner列表数据
+     * @param: hkBannerRequest
+     * @return: java.lang.Integer
+     * @author NingYueFeng
+     * @date: 2021/12/22 15:27
+     */
+    @Override
+    public Integer addHkBanner(HkBanner banner) {
+        request.setBannerId(banner.getBannerId());
+        //判断需要新增的banner是否已经存在于数据库
+        if (hkBannerDao.qryOneById(request) == null) {
+            //如果不存在则允许添加
+            return hkBannerDao.addHkBanner(banner);
+        }
+        return null;
+    }
+
+    /**
+     * @description: 删除banner列表数据
+     * @param: hkBannerRequest
+     * @return: java.lang.Integer
+     * @author NingYueFeng
+     * @date: 2021/12/22 15:27
+     */
+    @Override
+    public Integer delHkBannerById(HkBannerRequest hkBannerRequest) {
+        //判断需要新增的banner是否已经存在于数据库
+        if (hkBannerDao.qryOneById(hkBannerRequest) != null){
+            //如果存在则允许删除
+            return hkBannerDao.delHkBannerById(hkBannerRequest);
+        }
+        return null;
+    }
+
+    /**
+     * @description: 更新banner列表数据
+     * @param: hkBannerRequest
+     * @return: java.lang.Integer
+     * @author NingYueFeng
+     * @date: 2021/12/22 15:27
+     */
+    @Override
+    public Integer modHkBannerById(HkBanner banner) {
+        request.setBannerId(banner.getBannerId());
+        //判断需要新增的banner是否已经存在于数据库
+        if (hkBannerDao.qryOneById(request) == null) {
+            //如果存在则允许修改
+            return hkBannerDao.modHkBannerById(banner);
+        }
+        return null;
     }
 
 }

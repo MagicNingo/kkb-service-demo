@@ -38,5 +38,32 @@
         order by sort asc,banner_id desc
     </select>
 
+    <!-- 查询banner列表的单个数据 -->
+    <select id="qryOneById" resultMap="HkBannerResponseMap">
+        select
+            banner_id, title, description, image, url
+        from hk_banner where banner_id = #{banner_id}
+    </select>
+
+    <!-- 添加banner列表数据 -->
+    <insert id="addHkBanner" parameterType="HkBanner">
+        insert into hk_banner values(#{bannerId}, #{title}, #{description}, #{image},
+                                     #{url}, #{status}, #{sort}, #{createdBy}, #{createdTime}, #{updatedBy}, #{updatedTime})
+    </insert>
+
+    <!-- 删除banner列表数据 -->
+    <delete id="delHkBannerById" parameterType="Integer">
+        delete from hk_banner where banner_id = #{bannerId}
+    </delete>
+
+    <!-- 更新banner列表数据 -->
+    <update id="modHkBannerById" parameterType="HkBanner">
+        update hk_banner set banner_id = #{bannerId}, title = #{title},
+                             description = #{description}, image = #{image}, url = #{url},
+                             status = #{status}, sort = #{sort}, created_by = #{createdBy},
+                             created_time = #{createdTime}, updated_by = #{updatedBy}, updated_time = #{updatedTime}
+        where banner_id = #{bannerId}
+    </update>
+
 </mapper>
 

@@ -1,5 +1,6 @@
 package com.kkb.hk.dao;
 
+import com.kkb.hk.entity.HkBanner;
 import com.kkb.hk.vo.request.banner.HkBannerRequest;
 import com.kkb.hk.vo.response.banner.HkBannerResponse;
 import org.apache.ibatis.annotations.Mapper;
@@ -32,6 +33,43 @@ public interface HkBannerDao {
      * @date: 2021/12/16 16:27
      */
     List<HkBannerResponse> qryListByPage(HkBannerRequest hkBannerRequest);
+
+    /**
+     * @description:查询banner列表单个数据
+     * @param: hkBannerRequest
+     * @return: HkBannerResponse<com.kkb.hk.vo.response.banner.HkBannerResponse>
+     * @author NingYueFeng
+     * @date: 2021/12/22 15:27
+     */
+    HkBannerResponse qryOneById(HkBannerRequest hkBannerRequest);
+
+    /**
+     * @description: 添加banner列表数据
+     * @param: hkBannerRequest
+     * @return: java.lang.Integer
+     * @author NingYueFeng
+     * @date: 2021/12/22 15:27
+     */
+    Integer addHkBanner(HkBanner banner);
+
+    /**
+     * @description: 删除banner列表数据
+     * @param: hkBannerRequest
+     * @return: java.lang.Integer
+     * @author NingYueFeng
+     * @date: 2021/12/22 15:27
+     */
+    Integer delHkBannerById(HkBannerRequest hkBannerRequest);
+
+    /**
+     * @description: 更新banner列表数据
+     * @param: hkBannerRequest
+     * @return: java.lang.Integer
+     * @author NingYueFeng
+     * @date: 2021/12/22 15:27
+     */
+    Integer modHkBannerById(HkBanner banner);
+
 
 }
 

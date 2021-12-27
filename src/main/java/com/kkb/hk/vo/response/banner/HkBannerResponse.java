@@ -37,6 +37,30 @@ public class HkBannerResponse implements Serializable {
      * 跳转地址
      */
     private String url;
+    /**
+     * 状态;0=上架 1=下架 2=删除
+     */
+    private Integer status;
+    /**
+     * 顺序;越小越靠前
+     */
+    private Integer sort;
+    /**
+     * 创建人
+     */
+    private String createdBy;
+    /**
+     * 创建时间
+     */
+    private Date createdTime;
+    /**
+     * 更新人
+     */
+    private String updatedBy;
+    /**
+     * 更新时间
+     */
+    private Date updatedTime;
 
 
 }
